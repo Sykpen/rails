@@ -3,5 +3,5 @@
 Rails.application.routes.draw do
   get 'products', to: 'products#index', as: 'home'
 
-  resources :products
+  resources :products, only: [:update, :destroy, :create, :index]
 end

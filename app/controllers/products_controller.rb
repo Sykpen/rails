@@ -16,11 +16,13 @@ class ProductsController < ApplicationController
     end
 
     def create
-      @product = Product.create(product_params)
+      product_hash = product_params
+      product_hash[:image] = product_hash.delete :img_url
+      @product = Product.create(product_hash)
       render json: {new_product: @product}
     end
 
     private def product_params
-      params.require(:product).permit(:title, :titleEN, :price, :amount, :image)
+      params.permit(:title, :titleEN, :price, :amount, :img_url)
     end
 end
