@@ -12,7 +12,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_915_205_913) do
+ActiveRecord::Schema.define(version: 20_200_928_195_321) do
+  create_table 'admins', force: :cascade do |t|
+    t.string 'nickName'
+    t.string 'firstName'
+    t.string 'lastName'
+    t.string 'password'
+  end
+
+  create_table 'clients', force: :cascade do |t|
+    t.string 'email'
+    t.string 'password'
+    t.text 'address'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
   create_table 'products', force: :cascade do |t|
     t.string 'title'
     t.string 'titleEN'
