@@ -9,7 +9,7 @@ module Admins
     def update
       @product = Product.find(params[:id])
       @product.update(product_params)
-      render json: { update: @product}
+      render json: { update: @product }
     end
 
     def destroy

@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   post 'clients/login', to: 'clients#login'
 
   resources :clients
+
+  post 'admins/login_admin', to: 'admins#login_admin'
+
+  resources :admins
 end

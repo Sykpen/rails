@@ -12,11 +12,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_928_195_321) do
+ActiveRecord::Schema.define(version: 20_200_930_195_610) do
   create_table 'admins', force: :cascade do |t|
-    t.string 'nickName'
-    t.string 'firstName'
-    t.string 'lastName'
+    t.string 'nick_name'
+    t.string 'first_name'
+    t.string 'last_name'
     t.string 'password'
   end
 

@@ -7,7 +7,11 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.create(client_params)
-    render json: {new_client: @client}
+    if @client.valid?
+      render json: {new_client: @client}
+    else
+      render json: {errors: @client.errors.messages}
+    end
   end
 
   def login
