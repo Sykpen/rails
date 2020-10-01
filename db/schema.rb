@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,29 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_930_195_610) do
-  create_table 'admins', force: :cascade do |t|
-    t.string 'nick_name'
-    t.string 'first_name'
-    t.string 'last_name'
-    t.string 'password'
+ActiveRecord::Schema.define(version: 2020_10_01_141509) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "nick_name"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password"
   end
 
-  create_table 'clients', force: :cascade do |t|
-    t.string 'email'
-    t.string 'password'
-    t.text 'address'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "clients", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "nick_name"
+    t.integer "balance"
+    t.integer "bonus"
   end
 
-  create_table 'products', force: :cascade do |t|
-    t.string 'title'
-    t.string 'titleEN'
-    t.integer 'price'
-    t.integer 'amount'
-    t.string 'image'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.string "titleEN"
+    t.integer "price"
+    t.integer "amount"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
 end

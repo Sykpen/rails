@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :clients
 
-  post 'admins/login_admin', to: 'admins#login_admin'
+  post 'admins/login', to: 'admins#login'
 
   resources :admins
 end

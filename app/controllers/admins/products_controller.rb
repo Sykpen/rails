@@ -15,14 +15,14 @@ module Admins
     def destroy
       @product = Product.find(params[:id])
       @product.destroy
-      render json: {deleted_product: @product}
+      render json: { deleted_product: @product }
     end
 
     def create
       product_hash = product_params
       product_hash[:image] = product_hash.delete :img_url
       @product = Product.create(product_hash)
-      render json: {new_product: @product}
+      render json: { new_product: @product }
     end
 
     private def product_params
