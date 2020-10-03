@@ -6,9 +6,12 @@ class AdminsController < ApplicationController
   end
 
   def login
-    return render json: { response: 'Admin here, watchout', admin_data: admin_params } if Admin.find_by admin_params
-
-    render json: { error: 'Error. Are you trying to fool me ? You are not an admin !' }
+    admin = Admin.find_by(admin_params)
+    if admin
+      render json: { admin: admin }, status: :ok
+    else
+      render json: { message: 'Error. Are you trying to fool me ? You are not an admin !' }, status: :unauthorized
+    end
   end
 
   private def admin_params
