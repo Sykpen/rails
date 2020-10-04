@@ -3,5 +3,17 @@
 Rails.application.routes.draw do
   get 'products', to: 'products#index', as: 'home'
 
-  resources :products, only: [:update, :destroy, :create, :index]
+  resources :products, only: [:index]
+
+  namespace :admins do
+    resources :products, only: %i[update destroy create index]
+  end
+
+  post 'clients/login', to: 'clients#login'
+
+  resources :clients
+
+  post 'admins/login', to: 'admins#login'
+
+  resources :admins
 end

@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 products = [
   {
     title: 'Острый Цыпленок',
@@ -106,6 +99,77 @@ products = [
   }
 ]
 
+Product.destroy_all
+
 products.each do |product|
   Product.create(title: product[:title], titleEN: product[:titleEN], price: product[:price], amount: product[:amount], image: product[:image])
+end
+
+admins = [
+  {
+    nick_name: 'Sykpyn',
+    first_name: 'Sergey',
+    last_name: 'Potapov',
+    password: '467321'
+  },
+  {
+    nick_name: 'MrGrecha',
+    first_name: 'Dima',
+    last_name: 'Grecha',
+    password: 'sykpynthebest228'
+  }
+]
+
+Admin.destroy_all
+
+admins.each do |admin|
+  Admin.create(nick_name: admin[:nick_name], first_name: admin[:first_name], last_name: admin[:last_name], password: admin[:password])
+end
+
+clients = [
+  {
+    email: 'test',
+    password: 'test',
+    address: 'test',
+    first_name: 'test',
+    last_name: 'test',
+    nick_name: 'test',
+    balance: 0,
+    bonus: 0
+  },
+  {
+    email: 'test1',
+    password: 'test1',
+    address: 'test1',
+    first_name: 'test1',
+    last_name: 'test1',
+    nick_name: 'test1',
+    balance: 0,
+    bonus: 0
+  },
+  {
+    email: 'test2',
+    password: 'test2',
+    address: 'test2',
+    first_name: 'test2',
+    last_name: 'test2',
+    nick_name: 'test2',
+    balance: 0,
+    bonus: 0
+  }
+]
+
+Client.destroy_all
+
+clients.each do |client|
+  Client.create(
+    email: client[:email],
+    password: client[:password],
+    address: client[:address],
+    first_name: client[:first_name],
+    last_name: client[:last_name],
+    nick_name: client[:nick_name],
+    balance: client[:balance],
+    bonus: client[:bonus]
+  )
 end
