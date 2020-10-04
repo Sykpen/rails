@@ -20,9 +20,9 @@ class ClientsController < ApplicationController
   def show
     client = Client.find(params[:id])
     if client
-    return render json: { client: client }, status: :ok
-     else
-      return render json: { message: 'Error, no such client found' }, status: :not_found
+      render json: { client: client }, status: :ok
+    else
+      render json: { message: 'Error, no such client found' }, status: :not_found
     end
   end
 
