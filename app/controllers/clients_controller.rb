@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.create(client_params)
     if @client.valid?
-      render json: { new_client: @client }
+      render json: { client: @client }
     else
       render json: { errors: @client.errors.messages }
     end
@@ -18,18 +18,20 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = Client.find(params[:id])
-    return render json: { client: @client }, status: :ok if @client
+    client = Client.find(params[:id])
+    if client
+    return render json: { client: client }, status: :ok
+     else
+      return render json: { message: 'Error, no such client found' }, status: :not_found
+    end
   end
 
   def update
-    @client = Client.find(params[:id])
-    if @client
-      updated_balance = @client[:balance] += params[:balance].to_i
-      updated_bonus = @client[:bonus] += (params[:balance].to_i / 10).round
-      updated_params = { balance: updated_balance, bonus: updated_bonus}
-      @client.update(updated_params)
-      return render json: { client: @client, message: 'reoslve' }, status: :ok
+    client = Client.find(params[:id])
+    if client
+      updated_params = client.calculate_bonus(client, params)
+      client.update(updated_params)
+      return render json: { client: client, message: 'reoslve' }, status: :ok
     end
     render json: { message: 'Bad request options, reload page and try again.' }, status: :bad_request
   end
