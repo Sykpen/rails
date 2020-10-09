@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_001_141_509) do
+ActiveRecord::Schema.define(version: 20_201_007_134_452) do
   create_table 'admins', force: :cascade do |t|
     t.string 'nick_name'
     t.string 'first_name'
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20_201_001_141_509) do
     t.string 'nick_name'
     t.integer 'balance'
     t.integer 'bonus'
+  end
+
+  create_table 'orders', force: :cascade do |t|
+    t.text 'products_hash'
+    t.integer 'client_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'total_order_price'
+    t.index ['client_id'], name: 'index_orders_on_client_id'
   end
 
   create_table 'products', force: :cascade do |t|
