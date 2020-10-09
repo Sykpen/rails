@@ -11,9 +11,13 @@ Rails.application.routes.draw do
 
   post 'clients/login', to: 'clients#login'
 
+  get 'clients/:id/orders', to: 'clients#show_orders'
+
   resources :clients
 
   post 'admins/login', to: 'admins#login'
 
   resources :admins
+
+  resources :orders
 end

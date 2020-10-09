@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class ClientsController < ApplicationController
+  def index
+    render json: { clients: Client.all }
+  end
+
   def create
     @client = Client.create(client_params)
     if @client.valid?
@@ -12,7 +16,7 @@ class ClientsController < ApplicationController
 
   def login
     client = Client.find_by client_params
-    return render json: { message: 'Login done', client: client } if client
+    return render json: { message: 'Login done', client: client, status: 200 } if client
 
     render json: { error: 'Error, wrong login or password' }
   end
@@ -21,6 +25,16 @@ class ClientsController < ApplicationController
     client = Client.find(params[:id])
     if client
       render json: { client: client }, status: :ok
+    else
+      render json: { message: 'Error, no such client found' }, status: :not_found
+    end
+  end
+
+  def show_orders
+    client = Client.find(params[:id])
+    client_orders = client.orders
+    if client && client_orders
+      render json: { client_orders: client_orders }, status: :ok
     else
       render json: { message: 'Error, no such client found' }, status: :not_found
     end
